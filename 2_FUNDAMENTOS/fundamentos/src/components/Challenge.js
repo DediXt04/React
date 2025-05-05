@@ -8,7 +8,7 @@ const Challenge = () =>{
             <p>A: {a}</p>
             <p>B: {b}</p>
             <button onClick={()=> console.log(a+b)} >
-                AAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAaaaaaaa
             </button>
         </div>
     );
