@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import MyForm from './components/MyForm';
 
 function App() {
   return (
     <div className="App">
-      <MyForm />
+      <MyForm  user={{name:"Bolas", email: "bolas@bolas.bolas", bio: "mim de", role:"admin"  }}/>
     </div>
   );
 }
