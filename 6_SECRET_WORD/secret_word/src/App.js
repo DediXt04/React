@@ -51,9 +51,6 @@ function App() {
       return letter.toLowerCase();
     });
     
-    console.log(word, category);
-    console.log(wordLetters);
-
     setPickedWord(word);
     setPickedCategory(category);
     setLetters(wordLetters);
