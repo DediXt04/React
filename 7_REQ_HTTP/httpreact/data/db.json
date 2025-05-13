@@ -1,0 +1,55 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Teclado Mecanico RGB",
+        "price": 249.90
+      },
+      {
+        "id": 2,
+        "name": "Mouse Gamer 7200 DPI",
+        "price": 129.99
+      },
+      {
+        "id": 3,
+        "name": "Monitor 24\" Full HD",
+        "price": 899.00
+      },
+      {
+        "id": 4,
+        "name": "Fone de Ouvido Bluetooth",
+        "price": 199.99
+      },
+      {
+        "id": 5,
+        "name": "Webcam HD 1080p",
+        "price": 159.90
+      },
+      {
+        "id": 6,
+        "name": "Cadeira Gamer Reclinavel",
+        "price": 1249.00
+      },
+      {
+        "id": 7,
+        "name": "Notebook i5 8GB 256GB SSD",
+        "price": 3199.00
+      },
+      {
+        "id": 8,
+        "name": "Hub USB 4 Portas",
+        "price": 49.90
+      },
+      {
+        "id": 9,
+        "name": "Microfone Condensador",
+        "price": 349.00
+      },
+      {
+        "id": 10,
+        "name": "Cabo HDMI 2m",
+        "price": 29.90
+      }
+    ]
+  }
+  
