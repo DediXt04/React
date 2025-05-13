@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+h2 span {
+  font-family: 'Orbitron', monospace; 
+  font-size: 1.5rem;
+  color: #cafcf3; 
+  background-color: #000;
+  padding: 0.4em 1.2em;
+  border: 3px solid #cafcf3;
+  border-radius: 8px;
+  text-align: center;
+  width: fit-content;
+  margin: 2em auto;
+
+  letter-spacing: 2px;
+}
