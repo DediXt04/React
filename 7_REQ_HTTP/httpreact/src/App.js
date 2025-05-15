@@ -6,7 +6,7 @@ const url = 'http://localhost:3001/products';
 
 function App() {
   const [products, setProducts] = useState([]);
-  const {data: items} = useFetch(url);
+  const {data: items, httpConfig} = useFetch(url);
   
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -31,7 +31,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const product = { name, price };
-
+    /*
     const res = await fetch(url, {
       method: 'POST',
       headers: {
@@ -42,7 +42,10 @@ function App() {
     const addedProduct = await res.json();
 
     setProducts((prevProducts) => [...prevProducts, addedProduct]);
-    
+    */
+
+    httpConfig(product, 'POST');
+
     setName('');
     setPrice('');
   }

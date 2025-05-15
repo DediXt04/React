@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 export const useFetch = (url) => {
     const [data, setData] = useState([]);
@@ -6,6 +6,19 @@ export const useFetch = (url) => {
     const [config, setConfig] = useState([]);
     const [method, setMethod] = useState('GET');
     const [callFetch, setCallFetch] = useState(false);
+
+    const httpConfig = (data, method) => {
+        if (method === 'POST') {
+            setConfig({
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            setMethod(method);
+        }
+    };
 
     useEffect(( ) => {
         const fetchData = async () => {
@@ -28,7 +41,13 @@ export const useFetch = (url) => {
             };
             postData();
         }
-    },[config] );
+    }); // <-- Added missing closing parenthesis for the second useEffect
 
-    return { data };
-}
+    useEffect(() => {
+        if (method) {
+            httpRequest();
+        }
+    }, [config, method, url]); // <-- Fixed indentation and syntax
+
+    return { data, httpConfig };
+};
