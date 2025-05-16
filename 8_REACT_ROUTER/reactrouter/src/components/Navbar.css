@@ -8,14 +8,17 @@ nav a{
     padding: 5px;
     text-decoration: none;
     color: #000;
+    background-color: #c8faff;
+    border-radius: 5px;
 }
 
 nav a:hover{
-    background-color: #ccc;
+    background-color: #62b3d1;
     border-radius: 5px;
 }
 
 .active{
-    background-color: #000;
-    color: #ccc;
+    background-color: #c8faff;
+    border-radius: 5px;
+    border: #000 solid 1px;
 }

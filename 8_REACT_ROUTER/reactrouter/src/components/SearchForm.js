@@ -1,4 +1,4 @@
-import { Form, useNavigate } from "react-router-dom"
+import {useNavigate } from "react-router-dom"
 
 import { useState } from "react"
 
@@ -8,9 +8,7 @@ const SearchForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!query) return;
-        navigate(`/search?q=${query}`);
-        setQuery("");
+        navigate("/search?q=" + query);
     };
   return (
     <form onSubmit={handleSubmit}>

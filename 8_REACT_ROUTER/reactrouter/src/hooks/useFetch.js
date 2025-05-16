@@ -53,6 +53,7 @@ export const useFetch = (url) => {
         const res = await fetch(url);
 
         const json = await res.json();
+        console.log("Resposta da API:", json);
 
         setData(json);
 
