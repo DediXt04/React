@@ -1,0 +1,38 @@
+/* Botão verde */
+.btn_green {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #4CAF50; /* verde */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn_green:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  
+  /* Botão vermelho */
+  .btn_red {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #f44336; /* vermelho */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn_red:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+  }
+  
