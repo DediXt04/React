@@ -34,6 +34,10 @@
     color: aliceblue;
 }
 
+.links_list li:hover{
+    transform: scale(1.2);
+}
+
 .active{
     background-color: rgb(91, 114, 144);
     color: white;

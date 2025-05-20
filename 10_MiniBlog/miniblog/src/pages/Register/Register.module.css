@@ -1,0 +1,17 @@
+.register{
+    text-align: center;
+}
+
+.register p{
+    color: #666;
+}
+
+/*
+.register .error{
+    color: #721C24;
+    background-color: #F8D7DA;
+    border: 1px solid #f5c6cb;
+    padding: 5px;
+    border-radius: 5px;
+}
+*/
