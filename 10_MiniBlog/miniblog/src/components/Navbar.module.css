@@ -26,13 +26,18 @@
 
 .links_list li{
     margin: 0 1em;
-    
 }
 
 .links_list li a{
     padding: .4em .6em;
     color: aliceblue;
 }
+
+/*
+.links_list li button{
+
+    color: aliceblue;
+}*/
 
 .links_list li:hover{
     transform: scale(1.2);
