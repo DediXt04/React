@@ -4,4 +4,9 @@
 
 .create p {
     color: #666;
+    margin-bottom: 2em;
+}
+
+.create h2{
+    font-size: 2.2em;
 }

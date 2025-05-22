@@ -103,14 +103,14 @@ textarea{
 }
 
 button[disabled]{
-    background-color: #AAa;
+    background-color: #aaa;
 }
 button[data-girando]{
     transition: 5s;
 }
 
 button[data-girando]:hover{
-    transform: rotate3d(1, 2, 1, 720deg) scale(2);  
+    transform: rotate3d(1, 2, 1, 1080deg) scale(1.5);  
 }
 
 .error{
