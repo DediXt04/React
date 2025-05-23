@@ -2,12 +2,13 @@ body{
     background-color: aliceblue ;
     padding: 0;
     margin: 0;
-    font-family: "Icelandia", sans-serif;
+    font-family: "Iceland", sans-serif;
+    font-size: 20px;
 }
 
 input::placeholder,
 textarea::placeholder {
-    font-family: "Icelandia", sans-serif;
+    font-family: "Iceland", sans-serif;
     color: #aaa;
 }
 
@@ -24,12 +25,14 @@ nav button{
     transition: 0.4s;
     font-size: 1em;
     cursor: pointer;
-    font-family: "Icelandia", sans-serif;
+    font-family: "Iceland", sans-serif;
 }
 
-a{
+a {
     color: black;
-}
+    font-family: "Iceland", sans-serif;
+  }
+  
 
 nav button{
     color: aliceblue;
@@ -55,11 +58,13 @@ label span{
 
 input,
 textarea{
+    font-family: 'iceland';
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid #4d545c;
     padding: 0.8em 0;
     background-color: transparent;
+    font-size: 18px;
 }
 
 .btn{
@@ -74,12 +79,14 @@ textarea{
     padding: 10px 15px;
     font-size: 1em;
     margin-top: 5px;
+    font-family: 'Iceland', sans-serif;
 }
 
 .btn.btn-dark{
     background-color: black;
     border-radius: 0;
 }
+
 
 .btn.bnt-outline{
     background-color: transparent;
@@ -110,7 +117,7 @@ button[data-girando]{
 }
 
 button[data-girando]:hover{
-    transform: rotate3d(1, 2, 1, 1080deg) scale(1.5);  
+    transform: rotate3d(1, 2, 1, 1800deg) scale(1.5);  
 }
 
 .error{

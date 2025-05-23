@@ -7,8 +7,8 @@ import { useAuthentication } from "../hooks/useAuthentication"
 import { useAuthValue } from "../context/AuthContext"
 
 const Navbar = () => {
-    const {user} = useAuthValue();
-    const {logout} = useAuthentication();
+    const { user } = useAuthValue();
+    const { logout } = useAuthentication();
 
     return (
         <nav className={styles.navbar}>
@@ -37,17 +37,22 @@ const Navbar = () => {
                 )}
                 {user && (
                     <>
-                    <li>
-                        <NavLink to="/posts/create" className={({ isActive }) => (isActive ? styles.active : undefined)}>
-                            Novo post
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : undefined)}>
-                            Dashboard
-                        </NavLink>
-                    </li>
-                </>
+                        <li>
+                            <NavLink to="/posts/create" className={({ isActive }) => (isActive ? styles.active : undefined)}>
+                                Novo post
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : undefined)}>
+                                Dashboard
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/userpage" className={({ isActive }) => (isActive ? styles.active : undefined)}>
+                                Perfil
+                            </NavLink>
+                        </li>
+                    </>
                 )}
                 <li>
                     <NavLink to="/about" className={({ isActive }) => (isActive ? styles.active : undefined)}>
