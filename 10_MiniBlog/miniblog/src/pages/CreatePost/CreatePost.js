@@ -130,7 +130,7 @@ const CreatePost = () => {
           />
         </label>
         
-        {!response.loading && <button className="btn" data-girando>Criar post!</button>}
+        {!response.loading && <button className="btn" data-girando to="/">Criar post!</button>}
         {response.loading && (
           <button className="btn" disabled>
             Aguarde...

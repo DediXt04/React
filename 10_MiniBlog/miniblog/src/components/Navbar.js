@@ -61,9 +61,23 @@ const Navbar = () => {
                 </li>
                 {user && (
                     <li>
-                        <button onClick={logout}>Sair</button>
+                        <button onClick={() => {
+                            // Exibe a caixa de confirmação
+                            const isConfirmed = window.confirm("Tem certeza que deseja sair?");
+
+                            if (isConfirmed) {
+                                // Se o usuário confirmar, execute o logout
+                                logout();
+                            } else {
+                                // Se o usuário cancelar, não faz nada
+                                alert("Logout cancelado.");
+                            }
+                        }}>
+                            Sair
+                        </button>
                     </li>
                 )}
+
             </ul>
         </nav>
     )

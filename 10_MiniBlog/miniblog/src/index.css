@@ -1,5 +1,5 @@
-body{
-    background-color: aliceblue ;
+body {
+    background-color: aliceblue;
     padding: 0;
     margin: 0;
     font-family: "Iceland", sans-serif;
@@ -17,8 +17,8 @@ textarea:focus {
     outline: none;
 }
 
-a, 
-nav button{
+a,
+nav button {
     text-decoration: none;
     background-color: transparent;
     border: none;
@@ -31,33 +31,33 @@ nav button{
 a {
     color: black;
     font-family: "Iceland", sans-serif;
-  }
-  
+}
 
-nav button{
+
+nav button {
     color: aliceblue;
 }
 
 
-form{
+form {
     max-width: 40%;
     margin: 0 auto;
 }
 
-label{
+label {
     display: flex;
     flex-direction: column;
     margin-bottom: 1em;
 }
 
-label span{
+label span {
     margin: .3em;
     font-weight: bold;
     text-align: left;
 }
 
 input,
-textarea{
+textarea {
     font-family: 'iceland';
     box-sizing: border-box;
     border: none;
@@ -67,7 +67,7 @@ textarea{
     font-size: 18px;
 }
 
-.btn{
+.btn {
     background-color: rgb(56, 70, 88);
     color: aliceblue;
     text-align: center;
@@ -82,13 +82,13 @@ textarea{
     font-family: 'Iceland', sans-serif;
 }
 
-.btn.btn-dark{
+.btn.btn-dark {
     background-color: black;
     border-radius: 0;
 }
 
 
-.btn.bnt-outline{
+.btn.bnt-outline {
     background-color: transparent;
     border-radius: 0;
     color: black;
@@ -96,34 +96,52 @@ textarea{
     padding: 7px 30px;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: rgb(97, 116, 141);
     color: #fff;
 }
 
-.btn.bnt-outline:hover{
+.btn.bnt-outline:hover {
     background-color: black;
 }
 
-.btn.btn-danger:hover{
+.btn.btn-danger:hover {
     background-color: red;
 }
 
-button[disabled]{
+button[disabled] {
     background-color: #aaa;
 }
-button[data-girando]{
+
+button[data-girando] {
     transition: 5s;
 }
 
-button[data-girando]:hover{
-    transform: rotate3d(1, 2, 1, 1800deg) scale(1.5);  
+button[data-girando]:hover {
+    transform: rotate3d(1, 2, 1, 1800deg) scale(1.5);
 }
 
-.error{
+.error {
     color: #721C24;
     background-color: #F8D7DA;
     border: 1px solid #f5c6cb;
     padding: 5px;
     border-radius: 5px;
 }
+
+[data-girando] {
+    transition: 5s;
+}
+
+[data-girando]:hover {
+    transform: rotate3d(1, 2, 1, 1800deg) scale(1.5);
+}
+
+img[data-girando] {
+    transition: transform 0.5s ease;
+  }
+  
+  img[data-girando]:hover {
+    transform: rotate(360deg) scale(1.1);
+  }
+  

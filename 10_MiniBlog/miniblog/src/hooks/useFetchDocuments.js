@@ -21,17 +21,23 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
                 if (search) {
                     q = query(
-                        collectionRef,
-                        where("tags", "array-contains", search), // ✅ uso correto
-                        orderBy("createdAt", "desc") // ✅ ordenando por campo separado
+                      collectionRef,
+                      where("tags", "array-contains", search),
+                      orderBy("createdAt", "desc")
                     );
-                } else {
+                  } else if (uid) {
                     q = query(
-                        collectionRef,
-                        orderBy("createdAt", "desc")
+                      collectionRef,
+                      where("uid", "==", uid),
+                      orderBy("createdAt", "desc")
                     );
-                }
-
+                  } else {
+                    q = query(
+                      collectionRef,
+                      orderBy("createdAt", "desc")
+                    );
+                  }
+                  
                 onSnapshot(q, (querySnapshot) => {
                     setDocuments(
                         querySnapshot.docs.map((doc) => ({
