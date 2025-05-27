@@ -1,39 +1,45 @@
 .profileContainer {
-    max-width: 600px;
-    margin: 4em auto;
-    padding: 2em;
-    background-color: rgb(216, 224, 231);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-family: 'iceland', sans-serif;
-  }
-  
-  .profileContainer h2 {
-    margin-bottom: 0.5em;
-    font-size: 2em;
-    color: #2c3e50;
-  }
-  
-  .profileContainer p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: #555;
-  }
-  
-  .userInfo {
-    margin-top: 2em;
-    padding: 1em;
-    background-color: aliceblue;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  .userInfo p {
-    margin: 0.5em 0;
-    font-size: 1em;
-  }
-  
-  .userInfo strong {
-    color: #2c3e50;
-  }
-  
+  max-width: 600px;
+  margin: 4em auto;
+  padding: 2em;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'iceland', sans-serif;
+}
+
+.profileContainer h2 {
+  margin-bottom: 0.5em;
+  font-size: 2em;
+  color: #2c3e50;
+}
+
+.profileContainer p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+.userInfo {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+  background-color: aliceblue;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.userInfo p {
+  margin: 0.5em 0;
+  font-size: 1em;
+}
+
+.userInfo strong {
+  color: #2c3e50;
+}
+
+.profileContainer a,
+.profileContainer button {
+  margin: 0 5px;
+  width: 100px;
+}

@@ -19,6 +19,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Search from './pages/Search/Search';
 import Post from './pages/Post/Post';
 import EditPost from './pages/EditPost/EditPost';
+import EditUserPage from './pages/EditUserPage/EditUserPage'
 
 // COMPONENTS
 import Navbar from './components/Navbar';
@@ -59,6 +60,7 @@ function App() {
               <Route path="/posts/edit/:id" element={user ? <EditPost/> : <Navigate to="/login"/>} />
               <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to="/login"/>} />
               <Route path="/userpage" element={user ? <UserPage/> : <Navigate to="/login"/>} />
+              <Route path="/edituserpage" element={user ? <EditUserPage/> : <Navigate to="/login"/>} />
             </Routes>
           </div>
           <Fotter />
