@@ -34,13 +34,16 @@ const Dashboard = () => {
       ) : (
         <>
           <div className={styles.post_header}>
-            <span>Título</span>
+            <span>Post</span>
             <span>Ações</span>
           </div>
           {posts &&
             posts.map((post) =>
               <div key={post.id} className={styles.post_row}>
-                <p>{post.title}</p>
+                <div className={styles.post_info}>
+                  <img src={post.image} alt={post.title} />
+                  <p>{post.title}</p>
+                </div>
                 <div>
                   <Link to={`/posts/${post.id}`} className='btn btn-outline'>Ver</Link>
                   <Link to={`/posts/edit/${post.id}`} className='btn btn-outline'>Editar</Link>
@@ -56,7 +59,7 @@ const Dashboard = () => {
                       // Se o usuário cancelar, não faz nada
                       alert("Post não deletado.");
                     }
-                  }}className='btn btn-outline btn-danger'>
+                  }} className='btn btn-outline btn-danger'>
                     Excluir
                   </button>
                 </div>

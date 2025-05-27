@@ -54,7 +54,7 @@ const CreatePost = () => {
       tags: tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
-    });console.log(tagsArray);
+    }); console.log(tagsArray);
 
     console.log({
       title,
@@ -82,7 +82,7 @@ const CreatePost = () => {
     setTags("");
 
     // Redireciona (opcional)
-    //navigate("/");
+    navigate("/");
   };
 
   return (
@@ -110,6 +110,22 @@ const CreatePost = () => {
             value={image}
           />
         </label>
+
+        {image && (() => {
+          try {
+            // Valida se é uma URL válida
+            new URL(image);
+            return (
+              <div className={styles.image_preview}>
+                <p>Pré-visualização da imagem:</p>
+                <img src={image} alt="Preview" />
+              </div>
+            );
+          } catch {
+            return null;
+          }
+        })()}
+
         <label>
           <span>Conteúdo:</span>
           <textarea
@@ -129,8 +145,8 @@ const CreatePost = () => {
             value={tags}
           />
         </label>
-        
-        {!response.loading && <button className="btn" data-girando to="/">Criar post!</button>}
+
+        {!response.loading && <button className="btn" data-girando>Criar post!</button>}
         {response.loading && (
           <button className="btn" disabled>
             Aguarde...

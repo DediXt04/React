@@ -1,14 +1,14 @@
-.create {
+.edit{
     text-align: center;
-
+    
 }
 
-.create p {
+.edit p {
     color: #666;
     margin-bottom: 2em;
 }
 
-.create h2 {
+.edit h2{
     font-size: 2.2em;
 }
 

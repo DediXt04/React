@@ -41,7 +41,8 @@
 }
 
 .post_row{
-    border-bottom: 1px solid #eee;
+    align-items: center;
+    border-bottom: 1px solid #aeaeae;
 }
 
 .post_row p{
@@ -51,7 +52,18 @@
 .post_row a,
 .post_row button{
     margin: 0 5px;
-    height: 30px;
     width: 100px;
-    font-size: 0.7em;
+    font-size: 0.7em;  
+}
+
+.post_info{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.post_info img{
+    max-width: 5em;
+    border-radius: 7px;
+    box-shadow: 1px 1px 3px 3px rgba(116, 134, 149, 0.5);
 }
