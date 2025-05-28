@@ -1,3 +1,69 @@
-body{
-  padding-bottom: 500px;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonte padrão e cores suaves */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Listas */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Botões */
+button {
+  cursor: pointer;
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Inputs */
+input, textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Container genérico */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
