@@ -6,11 +6,21 @@ const HookUseState = () => {
 
     const [name, setName] = useState("Alan")
 
-    const changeNames = () =>{
+    const changeNames = () => {
         userName = "André Queiroz"
 
         setName("Alan Queiroz")
-    } 
+    }
+
+    const [age, setAge] = useState(18)
+
+    const handleSumbit = (e) =>{
+        e.preventDefault()
+
+        //envio pra API
+        console.log("Idade: " + age)
+    }
+
 
     return (
         <div>
@@ -18,6 +28,12 @@ const HookUseState = () => {
             <p>Variável: {userName}</p>
             <p>useState: {name}</p>
             <button onClick={changeNames}>Mudar nomes</button>
+            <form onSubmit={handleSumbit}>
+                <input type="number" value={age} onChange={(e) => setAge(e.target.value)} />
+                <input type="submit" value="Enviar" />
+            </form>
+            
+            <p>Você tem {age} anos!</p>
         </div>
     )
 }
