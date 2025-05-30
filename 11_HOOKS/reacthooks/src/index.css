@@ -11,6 +11,7 @@ body {
   background-color: #f4f4f4;
   color: #333;
   line-height: 1.6;
+
 }
 
 /* Links */
@@ -46,14 +47,16 @@ button:hover {
 }
 
 /* Inputs */
-input, textarea {
+input,
+textarea {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   border-color: #007bff;
 }
@@ -66,4 +69,8 @@ input:focus, textarea:focus {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  min-height: 60vh;
+  
+
+
 }
