@@ -2,6 +2,7 @@ const User = require("../models/User")
 
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const { default: mongoose } = require("mongoose")
 
 const jwtSecret = process.env.JWT_SECRET
 
@@ -96,11 +97,11 @@ const update = async (req, res) => {
         user.password = passwordHash
     }
 
-    if (profileImage){
+    if (profileImage) {
         user.profileImage = profileImage
     }
 
-    if (bio){
+    if (bio) {
         user.bio = bio
     }
 
@@ -109,9 +110,33 @@ const update = async (req, res) => {
     res.status(200).json(user)
 }
 
+const getUserById = async (req, res) => {
+    const { id } = req.params;
+
+    // Verifica se é um ID válido do Mongo
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ errors: ["ID inválido"] });
+    }
+
+    try {
+        const user = await User.findById(id).select("-password");
+
+        if (!user) {
+            return res.status(404).json({ errors: ["Usuário não encontrado"] });
+        }
+
+        return res.status(200).json(user);
+    } catch (error) {
+        console.error("Erro ao buscar usuário:", error);
+        return res.status(500).json({ errors: ["Erro no servidor"] });
+    }
+};
+
+
 module.exports = {
     register,
     login,
     getCurrentUser,
-    update
+    update,
+    getUserById
 }
