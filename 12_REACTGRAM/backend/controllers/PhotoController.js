@@ -18,11 +18,11 @@ const insertPhoto = async (req, res) => {
         userId: user._id,
         userName: user.name,
     });
-    
+
     await newPhoto.save(); // 👈 salva no banco!
-    
+
     res.status(201).json(newPhoto);
-    
+
 
     //If photo was created successfully, return data
     if (!newPhoto) {
@@ -63,11 +63,11 @@ const getAllPhotos = async (req, res) => {
 }
 
 //get user photos
-const getUserPhotos = async(req, res) => {
+const getUserPhotos = async (req, res) => {
 
-    const {id} = req.params
+    const { id } = req.params
 
-    const photos = Photo.find({userId: id})
+    const photos = Photo.find({ userId: id })
         .sort([["createdAt", -1]])
         .exec()
 
@@ -90,11 +90,42 @@ const getPhotoById = async (req, res) => {
     }
 }
 
+//Update photo
+const updatePhoto = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { title } = req.body || {}
+        const reqUser = req.user
+
+        const photo = await Photo.findById(id)
+
+        if (!photo) {
+            return res.status(404).json({ errors: ["Foto não encontrada!"] })
+        }
+
+        if (!photo.userId.equals(reqUser._id)) {
+            return res.status(422).json({ errors: ["Você não tem permissão para editar esta foto."] })
+        }
+
+        if (title) {
+            photo.title = title
+        }
+
+        await photo.save()
+
+        res.status(200).json({ photo, message: "Foto atualizada com sucesso!" })
+    } catch (error) {
+        res.status(500).json({ errors: ["Erro interno ao atualizar a foto."] })
+    }
+}
+
+
 
 module.exports = {
     insertPhoto,
     deletePhoto,
     getAllPhotos,
     getUserPhotos,
-    getPhotoById
+    getPhotoById,
+    updatePhoto
 }
