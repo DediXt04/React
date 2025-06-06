@@ -17,17 +17,46 @@ const insertPhoto = async (req, res) => {
         image,
         userId: user._id,
         userName: user.name,
-    })
+    });
+    
+    await newPhoto.save(); // 👈 salva no banco!
+    
+    res.status(201).json(newPhoto);
+    
 
     //If photo was created successfully, return data
-    if(!newPhoto) {
+    if (!newPhoto) {
         return res.status(422).json({ errors: ["Houve um erro, tente novamente mais tarde!"] })
     }
 
-    res.status(201).json(newPhoto)
 
 }
 
+const deletePhoto = async (req, res) => {
+    const { id } = req.params
+    const reqUser = req.user
+
+    try {
+        const photo = await Photo.findById(id)
+
+        if (!photo) {
+            return res.status(404).json({ errors: ["Foto não encontrada!"] })
+        }
+
+        if (!photo.userId.equals(reqUser._id)) {
+            return res.status(403).json({ errors: ["Você não tem permissão para deletar esta foto."] })
+        }
+
+        await Photo.findByIdAndDelete(photo._id)
+        return res.status(200).json({ id: photo._id, message: "Foto removida com sucesso!" })
+
+    } catch (error) {
+        return res.status(500).json({ errors: ["Erro interno no servidor."] })
+    }
+}
+
+
 module.exports = {
     insertPhoto,
+    deletePhoto
 }
