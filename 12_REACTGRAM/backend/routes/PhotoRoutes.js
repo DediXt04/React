@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 
 //CONTROLLER
-const { insertPhoto, deletePhoto, getAllPhotos } = require("../controllers/PhotoController")
+const { insertPhoto, deletePhoto, getAllPhotos, getUserPhotos } = require("../controllers/PhotoController")
 
 //MIDDLEWARES
 const { photoInsertValidation } = require("../middlewares/photoValidation")
@@ -14,14 +14,15 @@ const { imageUpload } = require("../middlewares/imageUpload")
 router.post(
     "/",
     authGuard,
-    imageUpload.single("image"), // ← precisa vir antes da validação
-    photoInsertValidation(),     // ← agora pode validar req.file
+    imageUpload.single("image"),
+    photoInsertValidation(),     
     validate,
     insertPhoto
 )
 
 router.delete("/:id", authGuard, deletePhoto)
 router.get("/", authGuard, getAllPhotos)
+router.get("/user/:id", authGuard, getUserPhotos)
 
 
 
