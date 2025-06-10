@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 
-import { register, reset } from '../../slices/authSlice';
+import { register, reset } from '../../slices/authSlices';
 
 import { useDispatch, useSelector } from 'react-redux';
 
