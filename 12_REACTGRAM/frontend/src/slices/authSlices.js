@@ -5,7 +5,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
     user: user ? user : null,
-    error: false,
+    error: null, // Ajustado de 'false' para 'null'
     success: false,
     loading: false,
 };
@@ -14,15 +14,16 @@ export const register = createAsyncThunk("auth/register",
     async (user, thunkAPI) => {
         const data = await authService.register(user);
 
+        // Corrigido para 'erros', como o backend realmente retorna
         if (data.errors) {
-            return thunkAPI.rejectWithValue(data.errors[0])
+            return thunkAPI.rejectWithValue(data.errors.join(" | ")); // Mostra todos os erros juntos
         }
 
         return data;
     }
 )
 
-//Logout an user
+// Logout an user
 export const logout = createAsyncThunk("auth/logout", async () => {
     await authService.logout();
 })
@@ -32,12 +33,17 @@ export const login = createAsyncThunk("auth/login",
         const data = await authService.login(user);
 
         if (data.errors) {
-            return thunkAPI.rejectWithValue(data.errors[0])
+            return thunkAPI.rejectWithValue(data.errors.join(" | "));
+        }
+
+        if (data.errors) {
+            return thunkAPI.rejectWithValue(data.errors.join(" | "));
         }
 
         return data;
     }
-)
+);
+
 
 export const authSlice = createSlice({
     name: "auth",
@@ -45,7 +51,7 @@ export const authSlice = createSlice({
     reducers: {
         reset: (state) => {
             state.loading = false;
-            state.error = false;
+            state.error = null; // Ajustado de 'false' para 'null'
             state.success = false;
         }
     },
@@ -53,7 +59,7 @@ export const authSlice = createSlice({
         builder
             .addCase(register.pending, (state) => {
                 state.loading = true;
-                state.error = false;
+                state.error = null;
             })
             .addCase(register.fulfilled, (state, action) => {
                 state.loading = false;
@@ -74,7 +80,7 @@ export const authSlice = createSlice({
             })
             .addCase(login.pending, (state) => {
                 state.loading = true;
-                state.error = false;
+                state.error = null;
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.loading = false;
