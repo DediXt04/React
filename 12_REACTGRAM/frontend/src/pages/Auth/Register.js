@@ -58,6 +58,7 @@ const Register = () => {
       <p>
         Já tem uma conta? <Link to="/login">Clique aqui</Link>
       </p>
+      
     </div>
   );
 
