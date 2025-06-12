@@ -1,6 +1,6 @@
-import {api, requestConfig} from '../utils/config';
+import { api, requestConfig } from '../utils/config';
 
-const profile = async(data, token) => {
+const profile = async (data, token) => {
     const config = requestConfig("GET", data, token)
 
     try {
@@ -11,15 +11,31 @@ const profile = async(data, token) => {
 
         return res
 
-        
+
     } catch (error) {
         console.log(error);
-        
+
+    }
+}
+
+const updateProfile = async (data, token) => {
+
+    const config = requestConfig("PUT", data, tokne)
+
+    try {
+        const res = await fetch(api + "/users/", config)
+            .then((res) => res.json())
+            .catch((err) => err)
+
+        return res
+    } catch (error) {
+        console.log(error)
     }
 }
 
 const userService = {
-    profile
+    profile,
+    updateProfile
 }
 
 export default userService;
