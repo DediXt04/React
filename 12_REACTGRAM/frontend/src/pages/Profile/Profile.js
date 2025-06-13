@@ -37,12 +37,14 @@ const Profile = () => {
 
   return (
     <div id="profile">
-      {user.profileImage && (
-        <img src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
-      )}
-      <div className="profile-description">
-        <h2>{user.name}</h2>
-        <p>{user.bio}</p>
+      <div className="profile-header">
+        {user.profileImage && (
+          <img src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
+        )}
+        <div className="profile-description">
+          <h2>{user.name}</h2>
+          <p>{user.bio}</p>
+        </div>
       </div>
     </div>
   )
