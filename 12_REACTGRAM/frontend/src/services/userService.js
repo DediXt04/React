@@ -19,19 +19,26 @@ const profile = async (data, token) => {
 }
 
 const updateProfile = async (data, token) => {
-
-    const config = requestConfig("PUT", data, token)
+    const config = {
+        method: "PUT",
+        body: data, // FormData
+        headers: {
+            Authorization: `Bearer ${token}`,
+            // NUNCA definir 'Content-Type' aqui com FormData
+        },
+    };
 
     try {
         const res = await fetch(api + "/users/", config)
             .then((res) => res.json())
-            .catch((err) => err)
+            .catch((err) => err);
 
-        return res
+        return res;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
+
 
 const userService = {
     profile,
