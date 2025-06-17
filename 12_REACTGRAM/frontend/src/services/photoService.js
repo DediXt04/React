@@ -19,7 +19,7 @@ const publishPhoto = async (data, token) => {
 //Get user photos
 const getUserPhotos = async (id) => {
 
-    const config = requestConfig("GET")
+    const config = requestConfig("GET", null , token)
 
     try {
 
