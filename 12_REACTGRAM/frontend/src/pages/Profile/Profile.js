@@ -5,7 +5,7 @@ import { uploads } from "../../utils/config"
 //components
 import Message from "../../components/Message"
 import { Link } from "react-router-dom"
-import { BsFillEyeFill, BsPencilFill, BsXlg } from "react-icons/bs"
+import { BsFillEyeFill, BsPencilFill, BsXLg } from "react-icons/bs" // Corrigido aqui
 
 //hooks
 import { useState, useEffect, useRef } from "react"
@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom"
 
 // redux
 import { getUserDetails } from "../../slices/userSlice"
-import { publishPhoto, resetMessage } from "../../slices/photoSlice"
+import { publishPhoto, resetMessage, getUserPhotos } from "../../slices/photoSlice"
 
 const Profile = () => {
 
@@ -24,12 +24,14 @@ const Profile = () => {
 
   const { user, loading } = useSelector((state) => state.user)
   const { user: userAuth } = useSelector((state) => state.auth)
-  const {
-    photos,
-    loading: loadingPhoto,
-    message: messagePhoto,
-    error: errorPhoto
+  const { 
+    photos, 
+    loading: loadingPhoto, // para publicar foto
+    loadingPhotos,         // novo para carregamento das fotos
+    message: messagePhoto, 
+    error: errorPhoto 
   } = useSelector((state) => state.photo)
+  
 
   const [title, setTitle] = useState("")
   const [image, setImage] = useState("")
@@ -41,12 +43,12 @@ const Profile = () => {
   //Load user data
   useEffect(() => {
     dispatch(getUserDetails(id))
+    dispatch(getUserPhotos(id))
   }, [dispatch, id])
 
   const handleFile = (e) => {
     // image preview
     const image = e.target.files[0];
-
     setImage(image);
   };
 
@@ -60,17 +62,16 @@ const Profile = () => {
 
     const formData = new FormData()
 
-    const photoFormData = Object.keys(photoData).forEach((key) => formData.append(key, photoData[key]))
-
-    formData.append("photo", photoFormData)
+    // Correção aqui: usamos direto o forEach sem criar variável inútil
+    Object.keys(photoData).forEach((key) => formData.append(key, photoData[key]));
 
     dispatch(publishPhoto(formData))
 
     setTitle("")
 
     setTimeout(() => {
-          dispatch(resetMessage());
-        }, 2000);
+      dispatch(resetMessage());
+    }, 2000);
   }
 
   if (loading) {
@@ -101,13 +102,29 @@ const Profile = () => {
                 <span>Imagem:</span>
                 <input type="file" onChange={handleFile} />
               </label>
-              {!loadingPhoto && <input type="submit" value="Postar" /> }
-              {loadingPhoto && <input type="submit" disabled value="Aguarde..." /> }
+              {!loadingPhoto && <input type="submit" value="Postar" />}
+              {loadingPhoto && <input type="submit" disabled value="Aguarde..." />}
             </form>
           </div>
-          {errorPhoto && <Message msg={errorPhoto} type="error"/> }
+          {errorPhoto && <Message msg={errorPhoto} type="error" />}
         </>
       )}
+      <div className="user-photos">
+        <h2>Fotos publicadas:</h2>
+        <div className="photos-container">
+          {photos && photos.map((photo) => (
+            <div className="photo" key={photo._id} >
+              {photo.image && (<img src={`${uploads}/photos/${photo.image}`} alt={photo.title} />)}
+
+              {/* Corrigido: usar photo._id e não photos._id */}
+              {id === userAuth._id ? (
+                <p>actions</p>
+              ) : (<Link className="btn" to={`/photos/${photo._id}`}>Ver</Link>)}
+            </div>
+          ))}
+        </div>
+        {photos.length === 0 && <p>Ainda não há fotos publicadas</p> }
+      </div>
     </div>
   )
 }

@@ -7,9 +7,11 @@ const initialState = {
     photo: {},
     error: false,
     success: false,
-    loading: false,
+    loading: false,           // para "publishPhoto"
+    loadingPhotos: false,     // para "getUserPhotos"
     message: null
 }
+
 
 export const publishPhoto = createAsyncThunk(
     "photo/publish",
@@ -29,7 +31,7 @@ export const publishPhoto = createAsyncThunk(
 
 export const getUserPhotos = createAsyncThunk(
     "photo/userPhotos",
-    async(id, thunkAPI) => {
+    async (id, thunkAPI) => {
 
         const token = thunkAPI.getState().auth.user.token
 
@@ -58,24 +60,31 @@ export const photoSlice = createSlice({
                 state.success = true;
                 state.error = null;
                 state.photo = action.payload;
-                state.photos.unshift(state.photo)
-                state.message = "Foto publicada com sucesso!"
+                state.photos.unshift(state.photo);
+                state.message = "Foto publicada com sucesso!";
             })
             .addCase(publishPhoto.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
                 state.photo = {};
             })
+
+            // Aqui está o getUserPhotos corrigido:
             .addCase(getUserPhotos.pending, (state) => {
-                state.loading = true;
+                state.loadingPhotos = true;
                 state.error = null;
             })
             .addCase(getUserPhotos.fulfilled, (state, action) => {
-                state.loading = false;
+                state.loadingPhotos = false;
                 state.success = true;
                 state.error = null;
-                state.photo = action.payload;
+                state.photos = action.payload; // corrigido: antes estava errado aqui
             })
+            .addCase(getUserPhotos.rejected, (state, action) => {
+                state.loadingPhotos = false;
+                state.error = action.payload;
+            })
+
     }
 })
 
