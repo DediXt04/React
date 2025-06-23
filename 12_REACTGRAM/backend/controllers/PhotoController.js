@@ -67,7 +67,7 @@ const getUserPhotos = async (req, res) => {
 
     const { id } = req.params
 
-    const photos = Photo.find({ userId: id })
+    const photos = await Photo.find({ userId: id })
         .sort([["createdAt", -1]])
         .exec()
 
