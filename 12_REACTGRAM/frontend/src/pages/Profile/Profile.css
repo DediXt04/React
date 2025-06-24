@@ -55,11 +55,18 @@
     cursor: pointer;
 }
 
-.edit-photo{
-    margin-bottom: 1em;
+.edit-photo {
+    padding: 10px;
 }
 
-.edit-photo img{
-    width: 100%;
-    margin-bottom: 1em;
+.edit-photo img {
+    display: block;
+    margin: 0 auto; /* centraliza só a imagem */
+    width: 50%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
+
