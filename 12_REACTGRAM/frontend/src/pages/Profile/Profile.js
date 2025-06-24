@@ -5,7 +5,7 @@ import { uploads } from "../../utils/config"
 //components
 import Message from "../../components/Message"
 import { Link } from "react-router-dom"
-import { BsFillEyeFill, BsPencilFill, BsXlg } from "react-icons/bs"
+import { BsFillEyeFill, BsPencilFill, BsTwitterX } from "react-icons/bs"
 
 //hooks
 import { useState, useEffect, useRef } from "react"
@@ -130,7 +130,13 @@ const Profile = () => {
                 />
               )}
               {id === userAuth._id ? (
-                <p>actions</p>
+                <div className="actions">
+                  <Link to={`/photos/${photo._id}`}>
+                    <BsFillEyeFill />
+                  </Link>
+                  <BsPencilFill/>
+                  <BsTwitterX/>
+                </div>
               ) : (
                 <Link className="btn" to={`/photos/${photo._id}`}>
                   Ver
@@ -138,7 +144,7 @@ const Profile = () => {
               )}
             </div>
           ))}
-          {photos.length === 0 && <p>Ainda não há fotos publicadas</p> } 
+          {photos.length === 0 && <p>Ainda não há fotos publicadas</p>}
         </div>
       </div>
     </div>
