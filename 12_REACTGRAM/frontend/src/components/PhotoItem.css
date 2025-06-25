@@ -1,0 +1,25 @@
+.photo-item {
+    padding: 10px;
+}
+
+.photo-item img {
+    display: block;
+    margin: 0 auto; /* centraliza só a imagem */
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#home .photo-item h2{
+    margin-bottom: .2em;
+}
+
+.photo-author {
+    text-align: left;
+}
+
+.photo-author a{
+    font-weight: bold;
+}
