@@ -58,7 +58,7 @@ export const updatePhoto = createAsyncThunk(
         const token = thunkAPI.getState().auth.user.token;
         try {
             const data = await photoService.updatePhoto(
-                { title: photoData.title},
+                { title: photoData.title },
                 photoData.id,
                 token);
             return data;
@@ -68,12 +68,15 @@ export const updatePhoto = createAsyncThunk(
     }
 )
 
-export const getPhoto = createAsyncThunk("photo/getphoto",
-    async(id) => {
-        const data = await photoService.getPhoto(id)
-
-        return data
+export const getPhoto = createAsyncThunk("photo/getphoto", async (id, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token;
+    try {
+        const data = await photoService.getPhoto(id, token);
+        return data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
     }
+}
 )
 
 export const photoSlice = createSlice({
@@ -146,7 +149,7 @@ export const photoSlice = createSlice({
                 state.success = true;
                 state.error = null;
                 state.photos.map((photo) => {
-                    if(photo._id === action.payload.photo._id){
+                    if (photo._id === action.payload.photo._id) {
                         return photo.title = action.payload.photo.title
                     }
                     return photo
@@ -167,7 +170,7 @@ export const photoSlice = createSlice({
                 state.loading = false;
                 state.success = true;
                 state.error = null;
-                state.photos = action.payload; // action.payload deve ser um array aqui
+                state.photo = action.payload; // action.payload deve ser um array aqui
             })
     }
 })

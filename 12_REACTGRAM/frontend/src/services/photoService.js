@@ -67,20 +67,33 @@ const updatePhoto = async(data, id, token) => {
 }
 
 // Get a photo by id
-const getPhoto = async(id) => {
-
-    const config = requestConfig("GET")
-
+const getPhoto = async (id, token) => {
+    const config = requestConfig("GET", null, token);
+  
     try {
-
-        const res = await fetch(api + "/photos/" + id, config).then((res) => res.json()).catch((err) => err)
-
-        return res
-        
+      const response = await fetch(api + "/photos/" + id, config);
+  
+      // se o status for erro (404, 500, etc), já lança erro
+      if (!response.ok) {
+        throw new Error("Erro ao buscar a foto: " + response.status);
+      }
+  
+      const data = await response.json();
+  
+      // verificação básica: o objeto tem campos esperados?
+      if (!data || !data.image) {
+        throw new Error("Foto inválida ou não encontrada");
+      }
+      
+      console.log("Data no getPhoto",data)
+      return data;
+  
     } catch (error) {
-        console.log(error)
+      console.log("Erro em getPhoto:", error);
+      throw error; // importante lançar o erro para o createAsyncThunk saber
     }
-}
+  }
+  
 
 const photoService = {
     publishPhoto,
