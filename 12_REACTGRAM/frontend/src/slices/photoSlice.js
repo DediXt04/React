@@ -83,7 +83,7 @@ export const getPhoto = createAsyncThunk(
 
 export const like = createAsyncThunk(
     "photo/like",
-    async(id, thunkAPI) => {
+    async (id, thunkAPI) => {
         const token = thunkAPI.getState().auth.user.token;
         try {
             const data = await photoService.like(id, token);
@@ -192,16 +192,23 @@ export const photoSlice = createSlice({
                 state.success = true;
                 state.error = null;
 
-                if(state.photo.likes){
-                    state.photo.likes.push(action.payload.userId)
+                if (state.photo._id === action.payload._id) {
+                    state.photo.likes = action.payload.likes;
+                }
+                
+
+                if (action.payload?._id && action.payload?.likes) {
+                    state.photos = state.photos.map((photo) => {
+                        if (photo._id === action.payload._id) {
+                            return {
+                                ...photo,
+                                likes: action.payload.likes
+                            }
+                        }
+                        return photo
+                    });
                 }
 
-                state.photos.map((photo) => {
-                    if (photo._id === action.payload.photo.photoId) {
-                        return photo.likes.push(action.payload.userId)
-                    }
-                    return photo
-                })
 
                 state.message = action.payload.message
             })

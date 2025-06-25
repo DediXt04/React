@@ -5,7 +5,7 @@ import { uploads } from "../../utils/config";
 // components
 import Message from "../../components/Message";
 import { Link } from "react-router-dom";
-import { BsFillEyeFill, BsPencilFill, BsXLg } from "react-icons/bs";
+import { BsFillEyeFill, BsPencilFill, BsTwitterX } from "react-icons/bs";
 
 // hooks
 import { useEffect, useState, useRef } from "react";
@@ -213,7 +213,7 @@ const Profile = () => {
                       <BsFillEyeFill />
                     </Link>
                     <BsPencilFill onClick={() => handleEdit(photo)} />
-                    <BsXLg onClick={() => handleDelete(photo._id)} />
+                    <BsTwitterX onClick={() => handleDelete(photo._id)} />
                   </div>
                 ) : (
                   <Link className="btn" to={`/photos/${photo._id}`}>
