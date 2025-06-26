@@ -96,11 +96,11 @@ export const like = createAsyncThunk(
 
 export const comment = createAsyncThunk(
     "photo/comment",
-    async(photoData, thunkAPI) => {
+    async (commentData, thunkAPI) => {
 
         const token = thunkAPI.getState().auth.user.token;
         try {
-            const data = await photoService.comment({comment: photoData.comment}, photoData.id, token);
+            const data = await photoService.comment({ comment: commentData.comment }, commentData.id, token);
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -210,7 +210,7 @@ export const photoSlice = createSlice({
                 if (state.photo._id === action.payload._id) {
                     state.photo.likes = action.payload.likes;
                 }
-                
+
 
                 if (action.payload?._id && action.payload?.likes) {
                     state.photos = state.photos.map((photo) => {
@@ -237,9 +237,15 @@ export const photoSlice = createSlice({
                 state.success = true;
                 state.error = null;
 
-                state.photo.comments.push(action.payload.comment)
+                // Verifica se 'comments' existe antes de usar 'push'
+                if (state.photo && Array.isArray(state.photo.comments)) {
+                    state.photo.comments.push(action.payload.comment);
+                } else if (state.photo) {
+                    // Se comments não existir ainda, inicializa como array
+                    state.photo.comments = [action.payload.comment];
+                }
 
-                state.message = action.payload.message
+                state.message = action.payload.message;
             })
             .addCase(comment.rejected, (state, action) => {
                 state.loading = false;
